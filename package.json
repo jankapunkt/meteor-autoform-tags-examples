@@ -1,0 +1,32 @@
+{
+  "name": "autoform-tags-test",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "lint": "eslint -c ./eslintrc.json ./",
+    "lint-fix": "eslint -c ./eslintrc.json --fix ./",
+    "lint-package": "eslint -c ./eslintrc.json --fix ./packages"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
+    "bootstrap": "^3.3.7",
+    "meteor-node-stubs": "^0.3.2",
+    "simpl-schema": "^1.4.3"
+  },
+  "devDependencies": {
+    "@meteorjs/eslint-config-meteor": "^1.0.5",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-compat": "^2.3.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-meteor": "^5.0.0",
+    "eslint-plugin-react": "^7.8.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "IE 10"
+  ]
+}

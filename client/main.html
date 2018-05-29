@@ -1,0 +1,78 @@
+<head>
+	<title>autoform-tags-test</title>
+</head>
+
+<body>
+<div class="container">
+	<h1 class="text-center">AutoForm Tags</h1>
+
+	<ul class="nav nav-tabs">
+		{{#each types}}
+			<li class="{{#if active this.value}}active{{/if}}">
+				<a href class="tab" data-target="{{this.value}}">{{this.label}}</a>
+			</li>
+		{{/each}}
+	</ul>
+	<p></p>
+	{{#with current}}
+
+		<div class="col-xs-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Docs</h4>
+				</div>
+				<div class="panel-body">
+					<ul class="list-group">
+						{{#each docs}}
+							<li class="list-group-item clearfix">
+							<span class="pull-right">
+								<button class="btn btn-sm btn-default edit-doc" data-target="{{this._id}}">Edit</button>
+							</span>
+								<span>{{this.tags}}</span>
+							</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Form</h4>
+				</div>
+				<div class="panel-body">
+					{{#if doc}}
+						<div>{{> quickForm id="tagsForm" doc=doc schema=(schema this) type="normal"}}</div>
+					{{else}}
+						<div>{{> quickForm id="tagsForm" schema=(schema this) type="normal"}}</div>
+					{{/if}}
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Schema</h4>
+				</div>
+				<div class="panel-body">
+					<pre>{{code this}}</pre>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Submit Result</h4>
+				</div>
+				<div class="panel-body">
+					<pre>{{insertDoc}}</pre>
+				</div>
+			</div>
+		</div>
+
+
+
+	{{else}}
+		<div class="jumbotron">
+			<h4>Please select a schema type</h4>
+		</div>
+	{{/with}}
+</div>
+</body>
