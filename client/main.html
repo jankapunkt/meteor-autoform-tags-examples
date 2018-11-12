@@ -6,22 +6,22 @@
 <div class="container">
 	<h1 class="text-center">AutoForm Tags</h1>
 
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs justify-content-center">
 		{{#each types}}
-			<li class="{{#if active this.value}}active{{/if}}">
-				<a href class="tab" data-target="{{this.value}}">{{this.label}}</a>
+			<li class="nav-item">
+				<a href class="nav-link {{#if active this.value}}active{{/if}} tab"
+                   data-target="{{this.value}}">{{this.label}}</a>
 			</li>
 		{{/each}}
 	</ul>
 	<p></p>
 	{{#with current}}
-
-		<div class="col-xs-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>Docs</h4>
+        <div class="row">
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header">
+					<h5>Docs</h5>
 				</div>
-				<div class="panel-body">
 					<ul class="list-group">
 						{{#each docs}}
 							<li class="list-group-item clearfix">
@@ -32,16 +32,15 @@
 							</li>
 						{{/each}}
 					</ul>
-				</div>
 			</div>
 		</div>
 
-		<div class="col-xs-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>Form</h4>
+		<div class="col-6">
+			<div class="card">
+				<div class="card-header">
+					<h5>Form</h5>
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 					{{#if doc}}
 						<div>{{> quickForm id="tagsForm" doc=doc schema=(schema this) type="normal"}}</div>
 					{{else}}
@@ -49,29 +48,29 @@
 					{{/if}}
 				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>Schema</h4>
+			<div class="card">
+				<div class="card-header">
+					<h5>Schema</h5>
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 					<pre>{{code this}}</pre>
 				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4>Submit Result</h4>
+			<div class="card">
+				<div class="card-header">
+					<h5>Submit Result</h5>
 				</div>
-				<div class="panel-body">
+				<div class="card-body">
 					<pre>{{insertDoc}}</pre>
 				</div>
 			</div>
 		</div>
-
+        </div>
 
 
 	{{else}}
 		<div class="jumbotron">
-			<h4>Please select a schema type</h4>
+			<h5>Please select a schema type</h5>
 		</div>
 	{{/with}}
 </div>

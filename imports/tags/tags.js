@@ -1,1 +1,1 @@
-export const Tags = new Mongo.Collection('tags');
+export const Tags = new Mongo.Collection('tags')
