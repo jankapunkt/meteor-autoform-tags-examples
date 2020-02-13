@@ -17,6 +17,7 @@ import { Tags } from '../imports/tags/tags'
 
 import './main.css'
 import './main.html'
+import { formIsValid } from '../imports/form/formIsValid'
 
 Template.body.onCreated(function helloOnCreated () {
   // counter starts at 0
@@ -65,16 +66,18 @@ Template.body.helpers({
     const doc = Template.instance().state.get('doc')
     console.log('return doc', doc)
     return doc
-  },
-  initialValuesSchema () {
-    return new SimpleSchema(initialValuesSchema, { tracker: Tracker })
-  },
+  }
 })
 
 Template.body.events({
   'submit #tagsForm' (event, templateInstance) {
     event.preventDefault()
-    const values = AutoForm.getFormValues('tagsForm')
+    const current = templateInstance.state.get('current')
+    const schema = schemas[current].schema
+    const validationSchema = new SimpleSchema(schema, { tracker: Tracker })
+    const values = formIsValid('tagsForm', validationSchema)
+    if (!values) return
+
     templateInstance.state.set('insertDoc', JSON.stringify(values.insertDoc, null, 2))
 
     const doc = templateInstance.state.get('doc')
